@@ -1,13 +1,20 @@
 const express = require('express');
 const {findCourseById, validateCourse} = require('./util');
 const courses = require('./mocks');
-
+const helmet = require('helmet');
+const morgan = require('morgan');
+const config = require('config');
+const appDebugger = require('debug')('app:root');
+const apiDebugger = require('debug')('app:api');
+ 
 const app = express();
-
-
+appDebugger({APP_Name: config.get('name')});
+appDebugger({pass: config.get('db.password')});
 app.use(express.json());
-
-
+app.use(express.urlencoded({extended: true}));
+app.use(express.static('public'));
+app.use(helmet());
+if (app.get('env') === 'development') app.use(morgan('tiny'));
 
 app.get('/', (req, res) => {
     res.send('Hello I am here');
@@ -61,6 +68,6 @@ app.delete('/api/courses/:id', (req, res)=> {
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
-    console.log(`app is running on ${port}`);
+    apiDebugger(`app is running on ${port}`);
 })
 
