@@ -1,0 +1,21 @@
+"""
+Configuration for database
+"""
+import os
+
+# IF SWARM env use this
+# DB_DRIVER = os.getenv("DB_DRIVER") if os.getenv("DB_DRIVER") else "postgres"
+# DB_HOST = os.getenv("DB_HOST") if os.getenv("DB_HOST") else "db"
+# DB_PORT = os.getenv("DB_PORT") if os.getenv("DB_PORT") else "8493"
+# DB_NAME = os.getenv("DB_NAME") if os.getenv("DB_NAME") else "monkanalytics"
+# DB_USER = os.getenv("DB_USER") if os.getenv("DB_USER") else "sumo"
+# DB_PASS = os.getenv("DB_PASS") if os.getenv("DB_PASS") else "monkstar"
+
+
+# IF LOCAL Connection USE this
+DB_DRIVER = os.getenv("DB_DRIVER") if os.getenv("DB_DRIVER") else "postgres"
+DB_HOST = os.getenv("DB_HOST") if os.getenv("DB_HOST") else "kmg-minbox-mkat-postgres.kubernetes.us-east-1.rds.amazonaws.com"
+DB_PORT = os.getenv("DB_PORT") if os.getenv("DB_PORT") else "8492"
+DB_NAME = os.getenv("DB_NAME") if os.getenv("DB_NAME") else "nmd"
+DB_USER = os.getenv("DB_USER") if os.getenv("DB_USER") else "monkeydluffy"
+DB_PASS = os.getenv("DB_PASS") if os.getenv("DB_PASS") else "91hwLjPwo8aSnl6"
